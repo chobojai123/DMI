@@ -3,7 +3,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('./logger');
-
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -13,16 +12,17 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
-const app = express();
+const messageRoutes = require('../database/routes/messageRoutes.js');
 
 mongoose.connect(
   'mongodb:david123:chobo555@ds121982.mlab.com:21982/techscreen',
-  { useNewUrlParser: true },
   () => console.log('Db has connected!'),
 );
 
+const app = express();
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+messageRoutes(app);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
