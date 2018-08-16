@@ -1,6 +1,7 @@
 /* eslint consistent-return:0 */
 
 const express = require('express');
+const mongoose = require('mongoose');
 const logger = require('./logger');
 
 const argv = require('./argv');
@@ -13,6 +14,12 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const app = express();
+
+mongoose.connect(
+  'mongodb:david123:chobo555@ds121982.mlab.com:21982/techscreen',
+  { useNewUrlParser: true },
+  () => console.log('Db has connected!'),
+);
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
