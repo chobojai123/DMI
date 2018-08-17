@@ -2,6 +2,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const logger = require('./logger');
 const argv = require('./argv');
 const port = require('./port');
@@ -20,6 +21,8 @@ mongoose.connect(
 );
 
 const app = express();
+
+// app.use(bodyParser.json());
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 messageRoutes(app);

@@ -24,10 +24,16 @@ module.exports = app => {
     });
 
     try {
-      await survey.save();
+      const string = await message.save();
       res.send('Saved successfully');
     } catch (err) {
       res.status(422).send(err);
     }
+  });
+
+  app.delete('/messages:id', async (req, res) => {
+    const message = await Message.findByIdAndDelete({ _id: req.params.id });
+
+    res.status(200).send('Survey has been deleted');
   });
 };
