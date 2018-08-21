@@ -15,19 +15,23 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
+import 'normalize.css';
 
 import Header from 'components/Header';
 import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Message from 'containers/Message/Loadable';
 import BgImage from '../../images/blue.jpg';
+
+import axios from 'axios';
+window.axios = axios;
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
-  display: flex;
   min-height: 100vh;
   padding: 0 16px;
-  flex-direction: column;
+  font-size: 20px;
+  font-weight: 300;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
     url(${BgImage});
   background-size: cover;
@@ -38,16 +42,10 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="Message Collector"
-        defaultTitle="Message Collector"
-      >
-        <meta name="description" content="A message collector app" />
-      </Helmet>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/messages" component={NotFoundPage} />
+        <Route path="/messages" component={Message} />
       </Switch>
     </AppWrapper>
   );

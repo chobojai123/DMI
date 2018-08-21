@@ -2,7 +2,6 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const logger = require('./logger');
 const argv = require('./argv');
 const port = require('./port');
@@ -14,15 +13,19 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const messageRoutes = require('../database/routes/messageRoutes.js');
+require('../database/models/Message');
+const bodyParser = require('body-parser');
 
 mongoose.connect(
-  'mongodb:david123:chobo555@ds121982.mlab.com:21982/techscreen',
+  'mongodb://localhost:27017/string',
   () => console.log('Db has connected!'),
 );
 
 const app = express();
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 messageRoutes(app);

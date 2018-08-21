@@ -10,10 +10,10 @@ class Header extends React.Component {
     return (
       <div>
         <NavBar>
-          <HeaderLink to="/">
+          <HeaderLink to="/" primary="true">
             <FormattedMessage {...messages.home} />
           </HeaderLink>
-          <HeaderLink to="/messages" primary="true">
+          <HeaderLink to="/messages">
             <FormattedMessage {...messages.displayMsgs} />
           </HeaderLink>
         </NavBar>

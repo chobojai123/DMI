@@ -3,29 +3,14 @@ const Message = require('../models/Message');
 module.exports = app => {
   app.get('/messages', async (req, res) => {
     const messages = await Message.find({});
-    res.status(200).send('got');
+    res.status(200).send(messages);
   });
 
-  // app.get('/messages/test', (req, res) => {
-  //   res.status(200).send('got');
-  // });
-
-  // app.post('/messages/test', (req, res) => {
-  //   res.send('Thanks for posting!!');
-  // });
-
   app.post('/messages', async (req, res) => {
-    const { body, name } = req.body;
-
-    const message = new Message({
-      body,
-      name,
-      dateEntered: Date.now(),
-    });
-
+    const { message } = req.body;
     try {
-      const string = await message.save();
-      res.send('Saved successfully');
+      const string = await Message.create({ body: message });
+      res.status(200).send(string);
     } catch (err) {
       res.status(422).send(err);
     }
