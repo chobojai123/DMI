@@ -13,7 +13,7 @@ function postMessage(message) {
   });
 }
 
-function fetchMessages() {
+export function fetchMessages() {
   return axios({
     method: 'GET',
     url: '/messages',

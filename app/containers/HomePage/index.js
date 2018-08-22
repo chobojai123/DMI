@@ -85,7 +85,7 @@ export default compose(
   withSaga,
   withConnect,
   reduxForm({
-    form: 'testing',
+    form: 'messageForm',
     onSubmitSuccess: (result, dispatch, props) => {
       dispatch(reset(props.form));
     },

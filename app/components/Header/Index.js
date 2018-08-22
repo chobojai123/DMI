@@ -5,8 +5,6 @@ import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
 import messages from './messages';
 
-// class Header extends React.PureComponent {
-//   render() {
 function Header() {
   return (
     <div>
@@ -21,6 +19,5 @@ function Header() {
     </div>
   );
 }
-// }
 
 export default Header;

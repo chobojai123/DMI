@@ -11,7 +11,7 @@ import {
 } from 'containers/App/selectors';
 import Wrapper from './Wrapper';
 
-class ShowMessages extends React.PureComponent {
+export class ShowMessages extends React.PureComponent {
   render() {
     const { loading, error, messages } = this.props;
     const messagesListProps = {
