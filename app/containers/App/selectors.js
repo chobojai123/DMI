@@ -13,9 +13,6 @@ const makeSelectError = () =>
 const makeSelectMessages = () =>
   createSelector(selectGlobal, globalState => globalState.get('messages'));
 
-const testing = () =>
-  createSelector(selectGlobal, globalState => globalState.get('message'));
-
 const makeSelectLocation = () =>
   createSelector(selectRoute, routeState => routeState.get('location').toJS());
 
@@ -24,6 +21,5 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectMessages,
-  testing,
   makeSelectLocation,
 };

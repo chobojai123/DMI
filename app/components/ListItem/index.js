@@ -5,7 +5,7 @@ import Item from './Item';
 import Wrapper from './Wrapper';
 
 function ListItem(props) {
-  return <Wrapper>{props.item.body}</Wrapper>;
+  return <Wrapper>{props.item}</Wrapper>;
 }
 
 ListItem.propTypes = {

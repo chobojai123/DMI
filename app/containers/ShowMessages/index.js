@@ -11,7 +11,6 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import { loadMessages, messagesLoaded } from 'containers/App/actions';
 import Wrapper from './Wrapper';
 
 class ShowMessages extends React.PureComponent {
@@ -22,11 +21,10 @@ class ShowMessages extends React.PureComponent {
       error,
       messages,
     };
-    console.log(this.props);
     return (
-      <div className="row">
+      <Wrapper>
         <MessagesList {...messagesListProps} />
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -37,13 +35,4 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError(),
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchMessages: () => dispatch(loadMessages()),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ShowMessages);
+export default connect(mapStateToProps)(ShowMessages);

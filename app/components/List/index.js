@@ -6,14 +6,15 @@ import Ul from './Ul';
 import Wrapper from './Wrapper';
 
 function List(props) {
+  let Component = props.component;
   let content = <div />;
 
   if (props.items) {
-    content = props.items.map(item => (
-      <ListItem key={`item-${item._id}`} item={item} />
-    ));
-  } else {
-    content = <ListItem />;
+    content = props.items
+      .reverse()
+      .map(item => <ListItem key={`item-${item._id}`} item={item.body} />);
+  } else if (props.component) {
+    content = <Component />;
   }
 
   return (
