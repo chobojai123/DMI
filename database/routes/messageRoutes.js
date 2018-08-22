@@ -15,10 +15,4 @@ module.exports = app => {
       res.status(422).send(err);
     }
   });
-
-  app.delete('/messages:id', async (req, res) => {
-    const message = await Message.findByIdAndDelete({ _id: req.params.id });
-
-    res.status(200).send('Survey has been deleted');
-  });
 };

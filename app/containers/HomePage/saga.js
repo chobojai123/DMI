@@ -1,13 +1,8 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 import { LOAD_MESSAGES } from 'containers/App/constants';
 import { CREATE_POST } from 'containers/HomePage/constants';
-import { makeSelectMessage } from 'containers/HomePage/selectors';
-import {
-  createMessageSuccess,
-  createMessageError,
-} from 'containers/HomePage/actions';
 import { messagesLoaded, messagesLoadingError } from 'containers/App/actions';
 
 function postMessage(message) {
@@ -25,13 +20,13 @@ function fetchMessages() {
   });
 }
 
-export function* createMessage() {
-  const message = yield select(makeSelectMessage());
+export function* createMessage(data) {
+  const message = data.message.body;
   try {
-    const response = yield call(postMessage, message);
-    yield put(createMessageSuccess());
+    yield call(postMessage, message);
+    console.log('You have successfully posted');
   } catch (err) {
-    yield put(createMessageError(err));
+    console.log(err);
   }
   yield call(getAllMessages);
 }

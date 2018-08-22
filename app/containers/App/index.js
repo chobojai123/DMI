@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
+import 'normalize.css';
+
 import Header from 'components/Header';
 import ShowMessages from 'containers/ShowMessages/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import BackgroundImage from '../../images/blue.jpg';
-import 'normalize.css';
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);

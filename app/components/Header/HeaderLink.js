@@ -20,7 +20,7 @@ export default styled(Link)`
     props.primary &&
     css`
       background-color: #3a5169;
-      color: #black;
+      color: #000000;
     `} &:active,
   &:hover {
     border: 1px solid #cf6d17;

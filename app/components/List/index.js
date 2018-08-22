@@ -5,8 +5,9 @@ import ListItem from 'components/ListItem';
 import Ul from './Ul';
 import Wrapper from './Wrapper';
 
+/* eslint-disable no-underscore-dangle */
 function List(props) {
-  let Component = props.component;
+  const Component = props.component;
   let content = <div />;
 
   if (props.items) {
@@ -23,8 +24,10 @@ function List(props) {
     </Wrapper>
   );
 }
+/* eslint-enable */
 
 List.propTypes = {
+  component: PropTypes.func,
   items: PropTypes.array,
 };
 

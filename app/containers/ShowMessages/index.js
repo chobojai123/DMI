@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import MessagesList from 'components/MessagesList';
@@ -28,6 +26,12 @@ class ShowMessages extends React.PureComponent {
     );
   }
 }
+
+ShowMessages.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  messages: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+};
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
