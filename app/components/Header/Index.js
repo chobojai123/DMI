@@ -13,7 +13,7 @@ class Header extends React.Component {
           <HeaderLink to="/" primary="true">
             <FormattedMessage {...messages.home} />
           </HeaderLink>
-          <HeaderLink to="/messages">
+          <HeaderLink to="/showMessages">
             <FormattedMessage {...messages.displayMsgs} />
           </HeaderLink>
         </NavBar>

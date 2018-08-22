@@ -6,8 +6,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.HomePage.header',
-    defaultMessage: 'Message Collector',
+  textAreaMessage: {
+    id: 'boilerplate.containers.HomePage.textArea.Message',
+    defaultMessage: 'WRITE A MESSAGE',
   },
 });

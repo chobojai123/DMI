@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
+import { loadMessages, messagesLoaded } from 'containers/App/actions';
 import { createPost } from './actions.js';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -28,6 +29,10 @@ class HomePage extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchMessages();
   }
 
   handleChange(event) {
@@ -53,21 +58,19 @@ class HomePage extends Component {
         <Form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="col span-3-of-3">
-              <Label>WRITE A MESSAGE</Label>
+              <h2>
+                <FormattedMessage {...messages.textAreaMessage} />
+              </h2>
             </div>
           </div>
           <div className="row">
             <div className="col span-3-of-3">
               <TextArea
-                // className="form-control"
                 type="text"
                 name="firstname"
                 placeholder="Your message"
                 onChange={this.handleChange}
                 value={this.state.message}
-                // onClick={this.handleSubmit}
-                // value={this.props.username}
-                // onChange={this.props.onChangeUsername}
                 required
               />
             </div>
@@ -90,6 +93,7 @@ HomePage.propTypes = {
 const mapDispatchToProps = dispatch => {
   return {
     onSubmitForm: message => dispatch(createPost(message)),
+    fetchMessages: () => dispatch(loadMessages()),
   };
 };
 

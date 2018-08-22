@@ -1,16 +1,15 @@
 import { fromJS } from 'immutable';
 
 import {
-  LOAD_MESSAGES_SUCCESS,
   LOAD_MESSAGES,
+  LOAD_MESSAGES_SUCCESS,
   LOAD_MESSAGES_ERROR,
 } from './constants';
 
-// The initial state of the App
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: false,
+  messages: false,
 });
 
 function appReducer(state = initialState, action) {
@@ -19,12 +18,9 @@ function appReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .setIn(['userData', 'MESSAGESitories'], false);
+        .set('messages', false);
     case LOAD_MESSAGES_SUCCESS:
-      return state
-        .setIn(['userData', 'MESSAGESitories'], action.MESSAGES)
-        .set('loading', false)
-        .set('currentUser', action.username);
+      return state.set('messages', action.messages).set('loading', false);
     case LOAD_MESSAGES_ERROR:
       return state.set('error', action.error).set('loading', false);
     default:
