@@ -4,6 +4,10 @@ import axios from 'axios';
 import { LOAD_MESSAGES } from 'containers/App/constants';
 import { CREATE_POST } from 'containers/HomePage/constants';
 import { messagesLoaded, messagesLoadingError } from 'containers/App/actions';
+import {
+  createPostSuccess,
+  createPostError,
+} from 'containers/HomePage/actions';
 
 function postMessage(message) {
   return axios({
@@ -24,9 +28,9 @@ export function* createMessage(data) {
   const message = data.message.body;
   try {
     yield call(postMessage, message);
-    console.log('You have successfully posted');
+    yield put(createPostSuccess('Successfully posted'));
   } catch (err) {
-    console.log(err);
+    yield put(createPostError(err));
   }
   yield call(getAllMessages);
 }

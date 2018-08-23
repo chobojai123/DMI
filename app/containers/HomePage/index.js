@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Field, reduxForm, reset } from 'redux-form/immutable';
 
-import { loadMessages } from 'containers/App/actions';
+import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import StyledButton from 'components/Button/StyledButton';
 import '../../css/grid.css';
+import reducer from './reducer';
 import saga from './saga';
 import { createPost } from './actions';
 import messages from './messages';
@@ -64,13 +65,11 @@ HomePage.propTypes = {
   handleSubmit: PropTypes.func,
   reset: PropTypes.func,
   onSubmitForm: PropTypes.func,
-  fetchMessages: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
     onSubmitForm: message => dispatch(createPost(message)),
-    fetchMessages: () => dispatch(loadMessages()),
   };
 }
 
@@ -79,9 +78,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
+const withReducer = injectReducer({ key: 'home', reducer });
 const withSaga = injectSaga({ key: 'home', saga });
 
 export default compose(
+  withReducer,
   withSaga,
   withConnect,
   reduxForm({

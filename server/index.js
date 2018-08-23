@@ -16,10 +16,7 @@ const messageRoutes = require('../database/routes/messageRoutes.js');
 require('../database/models/Message');
 const bodyParser = require('body-parser');
 
-mongoose.connect(
-  'mongodb://localhost:27017/string',
-  () => console.log('Db has connected!'),
-);
+mongoose.connect('mongodb://localhost:27017/string');
 
 const app = express();
 

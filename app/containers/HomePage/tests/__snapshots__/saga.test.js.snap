@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`createMessage Saga should call the createPostError action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      undefined,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`createMessage Saga should dispatch the createPostSuccess action if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      undefined,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
 exports[`getAllMessages Saga should call the messagesLoadingError action if the response errors 1`] = `
 Object {
   "@@redux-saga/IO": true,
