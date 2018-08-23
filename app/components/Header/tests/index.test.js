@@ -3,8 +3,6 @@ import { shallow } from 'enzyme';
 import { FormattedMessage } from 'react-intl';
 
 import Header from '../index';
-import NavBar from '../NavBar';
-import HeaderLink from '../HeaderLink';
 import messages from '../messages';
 
 describe('<Header />', () => {
@@ -16,17 +14,17 @@ describe('<Header />', () => {
   it('should render its heading message', () => {
     const renderedComponent = shallow(<Header />);
     expect(
-      renderedComponent.contains(<FormattedMessage {...messages.header} />),
+      renderedComponent.contains(<FormattedMessage {...messages.home} />),
     ).toBe(true);
   });
 
   it('should contain Nav Bar', () => {
     const renderedComponent = shallow(<Header />);
-    expect(renderedComponent.contains(<NavBar />)).toBe(true);
+    expect(renderedComponent.find('NavBar').exists()).toBeTruthy();
   });
 
   it('should contain HeaderLink', () => {
     const renderedComponent = shallow(<Header />);
-    expect(renderedComponent.contains(<HeaderLink />)).toBe(true);
+    expect(renderedComponent.find('HeaderLink').exists()).toBeTruthy();
   });
 });

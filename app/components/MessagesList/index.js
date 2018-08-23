@@ -11,9 +11,7 @@ function MessagesList({ loading, error, messages }) {
   }
 
   if (error !== false) {
-    const ErrorComponent = () => (
-      <ListItem item="Something went wrong, please try again!" />
-    );
+    const ErrorComponent = () => <ListItem item="Something went wrong!" />;
     return <List component={ErrorComponent} />;
   }
 
